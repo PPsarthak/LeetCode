@@ -1,0 +1,31 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+import java.util.*;
+class Solution {
+    public void deleteNode(ListNode node) {
+        List<Integer> myVector = new Vector<>();
+        ListNode temp = node;
+        while(temp!=null){
+            myVector.add(temp.val);
+            temp = temp.next;
+        }
+        temp = node;
+        ListNode prev = temp;
+        int i = 0;
+        int size = myVector.size();
+        while(i<size-1){
+            temp.val = myVector.get(i+1);
+            i++;
+            prev = temp;
+            temp = temp.next;
+        }
+        // System.out.println(temp.val);
+        prev.next = null;
+    }
+}
